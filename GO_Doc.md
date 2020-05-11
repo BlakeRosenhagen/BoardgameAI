@@ -161,20 +161,55 @@ Dead stones are stones whihc have no chance of making two eyes or connecting to 
 The only hard-coded strategy in the Go Ai is that a group of stones with two "eyes" cant be captured. The rest is inferred by machine learning
 
 Dead stones are stones whihc have no chance of making two eyes or connecting to friendly stones. They are treated the same as captures.
-
+### Alpha Beta
 
 
 
 # Deployment
 
 # Technologies Used
-Python, Jupyter Notebook
+Python
+    Numpy
+    enum
+    random
+    time
+Environments
+    Jupyter Notebook
+    Visual Studio Code
+
+# Concepts Explored
+Decision Trees
+    Tree traversal
+        In-order(LNR)
+    Min-Max Algorithm
+    Pruning
+        Depth Limited
+        Alpha-Beta
+        Depth Limited + Alpha Beta
+    Object-Oriented Methodoly of Game Trees
+        States
+        Recursion
+    
+
+
+
+
+
 
 
 # Online Resources
 http://online-go.com
-http,://gokgs.com
+http://gokgs.com
 www.tygembaduk.com
+
+https://en.wikipedia.org/wiki/Tree_traversal
+https://www.clear.rice.edu/comp212/07-spring/lectures/39/
+
+https://www.wikihow.com/Score-a-Game-of-Go
+
+https://machinelearningmastery.com/how-to-score-probability-predictions-in-python/
+
+
 
 https://senseis.xmp.net
 

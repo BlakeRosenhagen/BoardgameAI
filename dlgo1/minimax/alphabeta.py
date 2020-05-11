@@ -2,9 +2,21 @@ import random
 
 from dlgo1.agent.base import Agent
 from dlgo1 import gotypes
+from dlgo1.gotypes import Player
 
 MAX_SCORE = 999999
 MIN_SCORE = -999999
+
+#https://en.wikipedia.org/wiki/Tree_traversal
+
+
+
+
+
+
+
+
+
 
 #-------------------------------------------------------------------------
 #determining decisions based on the diffeerence of white 
@@ -18,7 +30,7 @@ def capture_diff(game_state):
         for c in range(1, game_state.board.num_cols + 1):
             p = gotypes.Point(r,c)
             color = game_state.board.get(p)
-            if color == gotypes.player.black:
+            if color == gotypes.Player.black:
                 black_stones += 1
             if color == gotypes.Player.white:
                 white_stones += 1
@@ -74,7 +86,12 @@ class AlphaBetaAgent(Agent):
         best_score = None
         best_black = MIN_SCORE
         best_white = MIN_SCORE
-        for possible_move in game_state.legal_moves:
+        #
+        #
+        #
+        #fixed non-iterable
+        legal_move_list = game_state.legal_moves()
+        for possible_move in legal_move_list:
             next_state = game_state.apply_move(possible_move)
             opponent_best_outcome = alpha_beta_result(next_state, self.max_depth, best_black, best_white, self.eval_fn)
             our_best_outcome = -1 * opponent_best_outcome
