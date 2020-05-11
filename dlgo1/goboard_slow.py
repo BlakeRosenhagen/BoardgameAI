@@ -13,7 +13,7 @@ class GoString():
     def remove_liberty(self, point):
         self.liberties.remove(point)
     
-    def add_libery(self,point):
+    def add_liberty(self,point):
         self.liberties.add(point)
     
     def merged_with(self, go_string):
@@ -76,8 +76,10 @@ class Board():
                 neighbor_string = self._grid.get(neighbor)
                 if neighbor_string is None:
                     continue
+                #neighbor_string gains a liberty if their is no string present on that point
                 if neighbor_string is not string:
                     neighbor_string.add_liberty(point)
+            #remove point from grid
             self._grid[point] = None
 
 
@@ -101,14 +103,22 @@ class Board():
                 if neighbor_string not in adjacent_opposite_color:
                     adjacent_opposite_color.append(neighbor_string)
         new_string = GoString(player, [point], liberties)
+        #merge each same_color_string with the new_string
         for same_color_string in adjacent_same_color:
             new_string = new_string.merged_with(same_color_string)
+            #place stones in new string on grid
         for new_string_point in new_string.stones:
             self._grid[new_string_point] = new_string
+            #remove liberties where opponint stones are
         for other_color_string in adjacent_opposite_color:
             other_color_string.remove_liberty(point)
         for other_color_string in adjacent_opposite_color:
-            if other_color_string.numliberties == 0:
+            if len(other_color_string.liberties) == 0:
+            #
+            #
+            #
+            #this was changed because "num_liberties method wasnt recognized"
+            #if other_color_string.numliberties == 0:
                 self._remove_string(other_color_string)
 
 #placing stones steps: 
@@ -132,7 +142,12 @@ class GameState():
             next_board.place_stone(self.next_player, move.point)
         else:
             next_board = self.board
-        return GameState(next_board, self.next_player, self, move)
+        #changed since the player didnt change from turn to turn. Created bug where grid vis is delayed one turn
+        #
+        #
+        #
+        next_turn_player = self.next_player.other
+        return GameState(next_board, next_turn_player, self, move)
     
     @classmethod
     def new_game(cls, board_size):
@@ -200,6 +215,31 @@ class GameState():
             #move doesn't violate ko
             not self.does_move_violate_ko(self.next_player, move))
     
+    def legal_moves(self):
+        "using this bypasses the need of is_valid_move"
+        moves = []
+        for row in range(1, self.board.num_rows + 1):
+            for col in range(1, self.board.num_cols + 1):
+                move = Move.play(Point(row, col))
+                if self.is_valid_move(move):
+                    moves.append(move)
+        moves.append(Move.pass_turn())
+        moves.append(Move.resign())
+
+        return moves
+        
+    
+    def winner(self):
+        if not self.is_over():
+            return None
+        if self.last_moveis_resign:
+            self.next_player
+            #
+            #
+            #
+            # haven't created compute_game_result
+        game_result = compute_game_result(self)
+        return game_result
 
 # if we're not careful then the AI will continue playing legal moves as 
 # long as they exist, which will make the AI fill up its own liberties 

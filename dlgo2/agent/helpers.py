@@ -1,6 +1,6 @@
 # tag::helpersimport[]
 
-from dlgo.gotypes import Point
+from dlgo1.gotypes import Point
 
 # end::helpersimport[]
 

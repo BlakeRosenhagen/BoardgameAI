@@ -17,9 +17,6 @@ __all__ = [
     'Point',
 
 ]
-
-
-
 # tag::color[]
 
 class Player(enum.Enum):

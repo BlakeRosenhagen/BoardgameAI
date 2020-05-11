@@ -2,13 +2,13 @@
 
 import random
 
-from dlgo.agent.base import Agent
+from dlgo1.agent.base import Agent
 
-from dlgo.agent.helpers import is_point_an_eye
+from dlgo1.agent.helpers import is_point_an_eye
 
-from dlgo.gotypes import Move
+from dlgo1.gotypes import Move
 
-from dlgo.gotypes import Point
+from dlgo1.gotypes import Point
 
 # end::randombotimports[]
 

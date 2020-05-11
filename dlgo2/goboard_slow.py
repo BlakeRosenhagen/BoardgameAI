@@ -4,11 +4,11 @@ import numpy as np
 
 import copy
 
-from dlgo.gotypes import Player
+from dlgo1.gotypes import Player
 
 # end::imports[]
 
-from dlgo.gotypes import Point
+from dlgo1.gotypes import Point
 
 
 

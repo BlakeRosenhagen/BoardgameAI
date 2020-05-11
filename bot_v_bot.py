@@ -25,5 +25,13 @@ def main():
         game = game.apply_move(bot_move)
 
 
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
     main()
