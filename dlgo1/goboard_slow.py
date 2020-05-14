@@ -3,6 +3,8 @@ import numpy as np
 from dlgo1.gotypes import Point
 from dlgo1.gotypes import Player
 from dlgo1.gotypes import Move
+from dlgo1 import scoring
+from dlgo1.scoring import compute_game_result
 
 class GoString():
     "Groups of stones"
@@ -139,7 +141,7 @@ class GameState():
     def apply_move(self, move):
         """returns new GameState after applying the move"""
         if move.is_play:
-            print(move.is_play)
+            #print(move.is_play)
             next_board = copy.deepcopy(self.board)
             next_board.place_stone(self.next_player, move.point)
         else:

@@ -10,14 +10,6 @@ MIN_SCORE = -999999
 #https://en.wikipedia.org/wiki/Tree_traversal
 
 
-
-
-
-
-
-
-
-
 #-------------------------------------------------------------------------
 #determining decisions based on the diffeerence of white 
 # and black stones to "head in the right direction"
@@ -53,6 +45,7 @@ def alpha_beta_result(game_state, max_depth, best_black, best_white, eval_fn):
         return eval_fn(game_state)
     best_so_far = MIN_SCORE
     for candidate_move in game_state.legal_moves():
+        print(str(max_depth))
         next_state = game_state.apply_move(candidate_move)
         opponent_best_result = alpha_beta_result(
             next_state, max_depth - 1,
@@ -92,6 +85,7 @@ class AlphaBetaAgent(Agent):
         #fixed non-iterable
         legal_move_list = game_state.legal_moves()
         for possible_move in legal_move_list:
+            print("1st")
             next_state = game_state.apply_move(possible_move)
             opponent_best_outcome = alpha_beta_result(next_state, self.max_depth, best_black, best_white, self.eval_fn)
             our_best_outcome = -1 * opponent_best_outcome

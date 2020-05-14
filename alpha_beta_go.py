@@ -10,8 +10,8 @@ from dlgo1.utils import print_board, print_move, point_from_coords
 
 
 def main():
-    BOARD_SIZE = 9
-    DEPTH = 3
+    BOARD_SIZE = 5
+    DEPTH = 2
     game = goboard_slow.GameState.new_game(BOARD_SIZE)
     bot = alphabeta.AlphaBetaAgent(DEPTH, capture_diff)
     while not game.is_over():
